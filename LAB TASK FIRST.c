@@ -18,3 +18,4 @@ per = (sum / 300) * 100;
 printf("the percentage %.2f ",per);
 return 0;
 }
+

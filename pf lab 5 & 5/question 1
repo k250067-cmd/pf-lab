@@ -1,0 +1,41 @@
+#include <stdio.h>
+int main()
+{
+    #include <stdio.h>
+
+int main() {
+    int x, y, z;
+    
+    printf("Enter three integers ");
+    scanf("%d %d %d", &x, &y, &z);
+    
+    printf("Second largest number is: ");
+    
+    if (x > y) {
+        if (x > y) {
+            // a is largest
+            if (x > y) {
+                printf("%d\n", y); 
+            } else {
+                printf("%d\n", z);
+            }
+        } else {
+            
+            printf("%d\n", x);
+        }
+    } else {
+        if (y > z) {
+            // b is largest
+            if (x > z) {
+                printf("%d\n", x); 
+            } else {
+                printf("%d\n", z); 
+            }
+        } else {
+            
+            printf("%d\n", y);
+        }
+    }
+    
+    return 0;
+}

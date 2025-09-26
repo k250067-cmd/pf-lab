@@ -1,0 +1,25 @@
+int main() {
+    int a;
+    int b;
+    
+    printf("give me a value of a");
+    scanf("%d", &a);
+    printf("give me a value of b");
+    scanf("%d", &b);
+    if (a>b){
+    a=a+b;
+    b = a-b;
+    a= a-b;
+    }
+    else {
+            printf("invalid");
+    return 0;
+    }
+        printf("give me a value of b after swapping is %d\n", b);
+                printf("give me a value of a after swapping is %dn", a);
+
+
+    
+    
+    return 0;
+}

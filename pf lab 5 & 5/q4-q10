@@ -37,14 +37,346 @@ printf("not avaiable");
 }
 default:
 
+    break;
+}
+return 0;
+
+q5
 
 
 
+
+
+#include <stdio.h> <math.h>
+int main(){
+    int a;
+    int b;
+    int c;
+    int discriminant;
+    // a is the coefficient of x square b is of x and c the constant
+
+
+    printf("give value of a");
+    scanf("%d", &a);
+    printf("give value of b");
+    scanf("%d", &b);
+     printf("give value of c");
+    scanf("%d", &c);
+
+
+discriminant = b * b - 4 * a * c;
+if (discriminant>0)
+{
+     printf("the roots are distinct and real");
+}
+else if (discriminant < 0)
+{
+     printf("the roots are imagnary and distinct");
+}
+else if (discriminant = 0)
+{
+  printf("the roots are real and equal");
+}
+printf("discrimanat\n", discriminant);
+return 0;
+}
+
+
+q6 
+    #include <stdio.h>
+
+  
+
+int main() {
+    int shapes;
+    int category, width;
+    int area, side, height;
+    int perimeter;
+    
+    printf("Which shape? Type 1=triangle, 2=square, 3=rectangle: ");
+    scanf("%d", &shapes);
+    
+    switch(shapes) {
+        case 1:
+            printf("Want area or perimeter? Type 1 or 2: ");
+            scanf("%d", &category);
+            switch(category) {
+                case 1:
+                    printf("Input base length: ");
+                    scanf("%d", &side);
+                    printf("Input height: ");
+                    scanf("%d", &height);
+                    area = (0.5) * (height * side);
+                    printf("Triangle area = %d\n", area);
+                    break;
+                case 2:
+                    printf("Input side 1 length: ");
+                    scanf("%d", &side);
+                    printf("Input side 2 length: ");
+                    scanf("%d", &height);
+                    printf("Input side 3 length: ");
+                    scanf("%d", &width);
+                    perimeter = width + side + height;
+                    printf("Triangle perimeter  %d", perimeter);
+                    break;
+                default:
+                    printf("Invalid choice\n");
+                    break;
+            }
+            break;
+            
+        case 2:
+            printf("Want area or perimeter? Type 1 or 2: ");
+            scanf("%d", &category);
+            switch(category) {
+                case 1:
+                    printf("Input side length: ");
+                    scanf("%d", &side);
+                    area = side * side;
+                    printf("Square area = %d\n", area);
+                    break;
+                case 2:
+                    printf("Input side length: ");
+                    scanf("%d", &side);
+                    perimeter = 4 * side;
+                    printf("Square perimeter = %d\n", perimeter);
+                    break;
+                default:
+                    printf("Invalid choice\n");
+                    break;
+            }
+            break;
+            
+        case 3:
+            printf("Want area or perimeter? Type 1 or 2: ");
+            scanf("%d", &category);
+            switch(category) {
+                case 1:
+                    printf("Input length: ");
+                    scanf("%d", &side);
+                    printf("Input width: ");
+                    scanf("%d", &width);
+                    area = side * width;
+                    printf("Rectangle area = %d\n", area);
+                    break;
+                case 2:
+                    printf("Input length: ");
+                    scanf("%d", &side);
+                    printf("Input width: ");
+                    scanf("%d", &width);
+                    perimeter = 2 * width + 2*side;
+                    printf("Rectangle perimeter  %d", perimeter);
+                    break;
+                default:
+                    printf("Invalid choice\n");
+                    break;
+            }
+            break;
+            
+        default:
+            printf("Invalid shape selection\n");
+            break;
+    }
+    return 0;
+}
+
+q7  
+
+
+#include <stdio.h>
+#include <string.h>
+#define  MAX_LENGTH 50
+int main (){
+char username[ MAX_LENGTH];
+int password = 1234;
+printf("enter username ");
+fgets(username, MAX_LENGTH, stdin);
+printf("enter password ");
+scanf("%d", &password);
+
+
+if (strcmp(username, "admin" )== 0){
+    if (password==1234)
+    {
+      printf("you got the correct username and pasword");
+    }
+}
+else{
+    printf("wrong usernname or password \n ");
+}
+
+
+return 0;
+}
+
+
+q8
+
+#include <stdio.h>
+#include <math.h>
+
+
+int main(){
+double  loanAmount, interest_rate, emi;
+int typesYears,instrestType;
+ printf("input loanAmount");
+    scanf("%lf", &loanAmount);
+  printf("input times in years");
+    scanf("%d", &typesYears);
+ printf("Enter annual interest rate  ");
+    scanf("%lf", &interest_rate);
+   
+    printf("Select interest type:\n");
+    printf(" Simple Interest\n");
+    printf(" Compound Interest (compounded annually)\n");
+    printf("Enter choice (1 or 2): ");
+    scanf("%d", &instrestType);
+    if (instrestType==1)
+    {
+    double totalAmount = loanAmount * (1 + (interest_rate * typesYears) / 100);
+    emi = totalAmount / typesYears;
+     printf("Monthly Installment (EMI): ₹%.2lf\n", emi);
+    }
+    else if (instrestType==2)
+
+
+    {
+        double totalAmount = loanAmount * pow(1 + interest_rate/100, typesYears);
+        emi = totalAmount / typesYears;
+        printf("Monthly Installment (EMI) %lf\n", emi);
+    }
+   
+    else {
+        printf("invalid");
+    }
+      return 0;
+}
+
+
+
+q9
+
+#include <stdio.h>
+int main(){
+int course;
+int department;
+printf("enter the department 1 for CS and 2 of EE and 3 for BBA");
+scanf("%d", &department);
+switch (department)
+{
+case (1):
+    printf("which course you want 1 for AI 2 for cyber");
+    scanf("%d", &course);
+    break;
+switch (course)
+{
+case (1):
+    printf("registering for AI");
+    break;
+case (2):
+ printf("registering for cyber");
+ break;
+
+
+default:
+ printf("not avalible");
+    break;
+}case (2):
+ printf("which course you want 1 for ciruit analysis and 2 for control system");
+    scanf("%d", &course);
+switch (course)
+{
+case (1):
+    printf("regitering for circuit analysis");
+    break;
+case (2):
+printf("registering for control system");
+break;
+default:
+printf("not avaiable");
+    break;
+}
+return 0;
+case (3):
+ printf("which course you want 1 for buisness and 2 for retail");
+    scanf("%d", &course);
+switch (course)
+{
+case (1):
+    printf("regitering for buiness");
+    break;
+case (2):
+printf("registering for retail");
+break;
+default:
+printf("not avaiable");
+    break;
+}
+
+
+
+
+default:
+
+
+printf("no department avaliable");
 
 
     break;
 }
 return 0;
 
+q10
+
+#include <stdio.h> <math.h>
+int main(){
+    int age;
+    int selection;
+    int c;
+    int discriminant;
+    // a is the coefficient of x square b is of x and c the constant
 
 
+    printf("input age");
+    scanf("%d", &age);
+
+
+if (age<12)
+{
+     printf("child ticket");
+}
+else if (12< age < 60)
+{
+     printf("adult ticket");
+}
+else if (age > 60)
+{
+  printf("senior ticket ");
+}
+printf("\n which kind of movie you wanna see 1 for action 2 for comedy and 3 for horror");
+    scanf("%d", &selection);
+switch (selection)
+{
+case (1):
+     printf("you are seeing action movie");
+
+
+     break;
+case (2):
+     printf("you are seeing comedy movie");
+     break;
+case (3):
+     printf("you are seeing horror movie");
+break;
+default:
+printf("movie not avaliable");
+     break;
+
+
+}
+
+
+
+
+return 0;
+}

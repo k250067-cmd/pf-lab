@@ -1,1 +1,50 @@
+#include <stdio.h>
+int main(){
+int cattegory;
+int more;
+printf("enter the cattegory 1 for snacks and 2 of drinks");
+scanf("%d", &cattegory);
+switch (cattegory)
+{
+case (1):
+    printf("which snacks 2 for chips 3 for rolls");
+    scanf("%d", &more);
+    break;
+switch (more)
+{
+case (2):
+    printf("dispensing chips");
+    break;
+case (3):
+ printf("dispensing rolls");
+ break;
+default:
+ printf("not avalible");
+    break;
+}case (2):
+ printf("which drink 2 for pepsi 3 for fanta");
+    scanf("%d", &more);
+switch (more)
+{
+case (2):
+    printf("dispensing pepsi");
+    break;
+case (3):
+printf("dispensing fanta");
+default:
+printf("not avaiable");
+    break;
+}
+default:
+
+
+
+
+
+
+    break;
+}
+return 0;
+
+
 

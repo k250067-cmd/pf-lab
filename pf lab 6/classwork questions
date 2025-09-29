@@ -12,7 +12,7 @@ int main() {
     a= a-b;
     }
     else {
-            printf("invalid");
+            printf("invalid");.
     return 0;
     }
         printf("give me a value of b after swapping is %d\n", b);

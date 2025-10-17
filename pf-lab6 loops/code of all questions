@@ -1,0 +1,319 @@
+#include <stdio.h> q1
+
+int main() {
+    int input;
+    int sum = 0;
+
+    printf("Input PIN: ");
+    scanf("%d", &input);
+
+    while (input != 0) {
+        sum += input % 10; 
+        input = input / 10;
+    }
+
+    if (sum > 10) {
+        printf("Strong password");
+    } else {
+        printf("Weak password");
+    }
+
+    return 0;
+
+
+
+
+
+  
+#include<stdio.h> q2
+int main(){
+    int num=0;
+    int reverse=0;
+    printf("input pin");
+    scanf("%d", &num);
+    while(num!=0){
+    int remainder = num % 10;
+    reverse = reverse*10+remainder;
+    num = num/10;
+    }
+    printf("reversed %d", reverse);
+return 0;
+}
+
+
+
+
+  
+
+
+#include <stdio.h> q3
+
+int main() {
+int n;
+int isPrime = 1;
+    printf("Enter your student ID  ");
+    scanf("%d", &n);
+
+    if (n < 2) {
+        printf("%d is NOT a valid ID not a prime number", n);
+    } else {
+        int isPrime = 1;
+
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+
+        if (isPrime)
+            printf("%d is a VALID I prime number\n", n);
+        else
+            printf("%d is NOT a valid ID not a prime number\n", n);
+    }
+
+    printf("Prime numbers from 1 to %d are:\n", n);
+    for (int i = 2; i <= n; i++) {
+        isPrime = 1;
+        for (int j = 2; j <= i / 2; j++) {
+            if (i % j == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+        if (isPrime)
+            printf("%d ", i);
+    }
+
+    printf("\n");
+    return 0;
+}
+
+
+
+
+
+  
+  
+#include <stdio.h> q4
+
+int main() {
+    int sum=0;
+    int input;
+    int counter = 1;
+    while (input!=-1)
+    {
+        printf("input number of students");
+        scanf("%d", &input);
+        sum +=input;
+        counter++;
+    }
+    printf("average is %d", sum/counter);
+    return 0;
+}
+
+
+
+
+
+  
+#include <stdio.h> q7
+
+int main() {
+    int num = 0;
+    int reverse = 0;
+    int original; 
+
+    printf("Input pin ");
+    scanf("%d", &num);
+
+    original = num;  
+
+    while (num != 0) {
+        int remainder = num % 10;
+        reverse = reverse * 10 + remainder;
+        num = num / 10;
+    }
+
+    printf("Reversed %d\n", reverse);
+
+    if (reverse == original) {
+        printf("Palindrome YES \n");
+    } else {
+        printf("Not a palindrome\n");
+    }
+
+    return 0;
+}
+   
+return 0;
+}
+
+
+
+
+//q q10
+   #include <stdio.h> 
+void main(){
+    
+ int n =6;
+ for (int i = 1; i <= 5;i++)
+ {
+for (int j = 1; j <=5-i;j++)
+{
+   printf(" ");
+}
+for (int k = 1; k <= (2*i)-1; k++)
+{
+  if (k==1 || k==(2*i)-1)
+  {
+   printf("*");
+  }
+  else {
+   printf(" ");
+  }
+}
+printf("\n");
+ }
+ for(int i=4;i>=0;i--){
+for (int j = 1; j <= 5-i; j++)
+{
+   printf(" ");
+}
+for (int k = 1; k <= (2*i)-1 ; k++)
+{
+   if (k==1 || k==(2*i)-1)
+  {
+   printf("*");
+  }
+  else {
+   printf(" ");
+  }
+
+}
+printf("\n");
+ }
+return 0;
+}
+
+
+
+q9
+#include <stdio.h> 
+int main(){
+int n;
+int arr[100];
+int c;
+ printf("input how many number you want to enter");
+    scanf("%d", &c);
+for (int i = 0; i < c; i++)
+{
+ printf("inpiut a number to ");   
+scanf("%d", &arr[i]);
+}
+int odd = 0;
+int even = 0;
+for (int i = 0; i < c; i++)
+{
+    if (i%2==0)
+    {
+     even++;
+    }
+    else {
+        
+     odd++;
+    }  
+}
+printf("num of enen num %d", even);
+printf("num of odd num %d", odd);
+return 0;
+}
+
+
+
+q6
+#include <stdio.h> 
+int main(){
+int n;
+int c;
+printf("give me a num to make multiplicztion table");
+scanf("%d", &n);
+int counter =1;
+do
+{
+    c=n*counter;
+    printf("%d\n", c);
+    counter++;
+} while (counter<=10);
+return 0;
+}
+
+
+
+q5
+#include<stdio.h>
+int main() {
+    int num;
+    int sum =0;
+    printf("input a num of factorial");
+    scanf("%d", &num);
+    int n = num-1;
+    
+    for (int i = num; i > 0; i--)
+    {
+        sum += num*n;
+
+        n--;
+    }
+    printf("factorial of %d is %d\n",num,sum);
+    for (int i = 1; i < num; i++)
+    {
+        printf("%d\n",i);
+    }
+    
+    return 0;
+}
+
+
+
+q8.
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    long long fact = 1, fact2n, factn, factn1, catalan;
+
+    printf("Enter how many Catalan numbers you want ");
+    scanf("%d", &n);
+
+    printf("First %d Catalan numbers are\n", n);
+
+
+    for (i = 0; i < n; i++) {
+        
+     
+        fact2n = 1;
+        for (j = 1; j <= 2 * i; j++) {
+            fact2n = fact2n * j;
+        }
+
+      
+        factn = 1;
+        for (j = 1; j <= i; j++) {
+            factn = factn * j;
+        }
+
+        
+        factn1 = 1;
+        for (j = 1; j <= i + 1; j++) {
+            factn1 = factn1 * j;
+        }
+
+        catalan = fact2n / (factn1 * factn);
+
+        printf("%d ", catalan);
+    }
+
+    printf("\n");
+    return 0;
+}

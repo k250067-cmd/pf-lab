@@ -1,0 +1,245 @@
+#include<stdio.h> q8
+int main(){
+    char arr[100]="abd";
+    char brr[100]="abc";
+    for (int i = 0; arr[i] != '\0' && brr[i] != '\0'; i++)
+    {
+     
+     
+        if (arr[i]!=brr[i])
+        {
+            printf("mismatched words on index %d\n", i);
+        }
+        else{
+            printf("all same inputs\n");
+        }
+     
+     
+    }
+    return 0;
+}
+
+
+
+// #include<stdio.h> q3
+// int main(){
+// int value=4;
+// int arr[]={1,2,3,4,6,7,8,6,4,4,3,5};
+// int lenght = sizeof(arr)/sizeof(arr[0]);
+// printf("%d\n", lenght);
+// for (int i = 0; i < lenght; i++)
+// {
+//     if (arr[i]==value)
+//     {
+//         for (int j = i; j < lenght; j++)
+//         {
+//             arr[j]=arr[j+1];
+//         }
+        
+//     i--;
+//     lenght--;
+//     }
+   
+// }
+
+// printf("New length after removing %d: %d\n", value, lenght);
+// return 0;
+// }
+
+
+
+
+
+// #include<stdio.h> q7
+// int main(){
+// char arr[20] = "Lahoreisgood";
+// int vowels=0;
+// int consonants =0;
+// int lengh=sizeof(arr)/sizeof(arr[0]);
+// for (int i = 0; i < lengh; i++)
+// {
+//     if (arr[i]>'A' && arr[i]<'Z')
+//     {
+//       arr[i]=arr[i]+32;
+
+//     }
+
+//       if (arr[i] >= 'a' && arr[i] <= 'z') {
+           
+//             if (arr[i] == 'a' || arr[i]== 'e' || arr[i] == 'i' || arr[i] == 'o' || arr[i] == 'u') {
+//                 vowels++;
+//             } else {
+//                 consonants++;
+//             }
+//       }
+//  }
+//  printf("vowels are %d", vowels);
+//  printf(" consonants are %d", consonants);
+// return 0;
+// }
+
+// #include <stdio.h> q5
+
+// int main() {
+//     int arr1[] = {1, 2, 3};
+//     int arr2[] = {4, 5, 6, 7};
+//     int merged[20]; 
+
+//     int size1 = sizeof(arr1) / sizeof(arr1[0]);
+//     int size2 = sizeof(arr2) / sizeof(arr2[0]);
+//     int mergedSize = size1 + size2;
+
+
+//     for (int i = 0; i < size1; i++) {
+//         merged[i] = arr1[i];
+//     }
+
+//     for (int i = 0; i < size2; i++) {
+//         merged[size1 + i] = arr2[i];
+//     }
+
+    
+//     printf("Merged array");
+//     for (int i = 0; i < mergedSize; i++) {
+//         printf("%d ", merged[i]);
+//     }
+
+//     return 0;
+// }
+
+
+
+
+// #include <stdio.h>  q6
+
+// int main() {
+//     int arr[] = {1, 2, 3, 4, 5};
+//     int size = sizeof(arr) / sizeof(arr[0]);
+//     int last = arr[size - 1];
+//     for (int i = size-1; i >0; i--)
+//     {
+//         arr[i]=arr[i-1];
+//     }
+//     arr[0]=arr[size - 1];
+//     for (int i = 0; i < size; i++)
+//     {
+//         printf(" %d ", arr[i]);
+//     }
+//     return 0;
+//     }
+
+
+
+
+
+
+// #include <stdio.h>  q4
+// int main() {
+// int arr[]={21,21,2,3,454,5,56,53,76,43};
+// int n=sizeof(arr) / sizeof(arr[0]);
+// int start=0;
+// int end=n-1;
+// int temp;
+// for (int i = 0; i < n; i++)
+// {
+//     printf(" (%d) ", arr[i]);
+// }
+// for (int i = 0; start <= end; i++)
+// {
+//  temp=arr[start];
+//  arr[start]=arr[end];
+//  arr[end]=temp;
+// start++;
+// end--;
+// }
+// printf(" reverse");
+// for (int i = 0; i < n; i++)
+// {
+//     printf(" %d ", arr[i]);
+// }
+// return 0;
+// }
+
+
+
+
+// #include <stdio.h>  q9
+// int main() {
+// char arr[]="Lahore is good alsp";
+// int max=0;
+// int len=0;
+// int word;
+//  int size = sizeof(arr) / sizeof(arr[0]);
+//  for (int i = 0; i < size; i++)
+//  {
+    
+//     if (arr[i]!=' ' && arr[i]!='\0')
+//     {
+//         len++;
+      
+//     }
+    
+//     if (len>max)
+//     {
+
+//         max=len;
+//     }
+//     len=0;
+//  }
+//   printf("maximum lenght is at index:");
+//  printf("%d", max);
+//  return 0;
+// }
+
+
+
+
+
+// #include <stdio.h>  q1
+
+// int main() {
+//     int temps[] = {32, 28, 35, 30, 27, 40, 25}; 
+//     int size = sizeof(temps) / sizeof(temps[0]);
+
+//     int max = temps[0];
+//     int min = temps[0];
+
+
+//     for (int i = 1; i < size; i++) {
+//         if (temps[i] > max)
+//             max = temps[i];
+//         if (temps[i] < min)
+//             min = temps[i];
+//     }
+
+//     printf("Hottest temperature  %d\n", max);
+//     printf("Coldest temperature  %d\n", min);
+
+//     return 0;
+// }
+
+
+
+
+
+#include <stdio.h> q2
+
+int main() {
+    float power[] = {120.5, 135.8, 110.2, 142.6, 128.4, 150.0};
+    int size = sizeof(power) / sizeof(power[0]);
+
+    float sum = 0;
+
+    for (int i = 0; i < size; i++) {
+        sum += power[i];
+    }
+
+    
+    float average = sum / size;
+
+
+    printf("Total power usage %.2f watts\n", sum);
+    printf("Average hourly usage %.2f watts\n", average);
+
+    return 0;
+}

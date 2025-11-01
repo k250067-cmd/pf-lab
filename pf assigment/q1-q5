@@ -1,0 +1,456 @@
+#include<stdio.h> q5
+#include <string.h>
+void reversal(char str[])
+{
+int size=strlen(str);
+for (int i = 0; i < size/2; i++)
+{
+char temp = str[i];
+str[i] = str[size - i - 1];
+str[size - i - 1] = temp;
+}
+printf("reversed word:  %s", str);
+}
+
+  void encodeMessage(char str[]) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        unsigned char ch = str[i];
+        ch = ch ^ (1 << 1); 
+        ch = ch ^ (1 << 4); 
+
+        str[i] = ch; 
+    }
+
+  }
+  void decode(char str[]){
+    for (int i = 0; str[i] != '\0'; i++) {
+        unsigned char ch = str[i];
+        ch = ch ^ (1 << 4); 
+
+        str[i] = ch;}
+        }
+
+
+
+ #include<stdio.h>
+int main(){
+    int choice;
+    char str[]="your rider is ready";
+     printf("original message: %s\n", str);
+    printf("main menue\n");
+    printf("1.encode message type 1 or 0 if not\n");
+    scanf("%d", &choice);
+    if (choice==1)
+    {
+        reversal(str);
+        encodeMessage(str);
+         printf("\nEncoded Message: %s\n", str);
+    }
+    printf("2.decode message type 2\n");
+    scanf("%d", &choice);
+if (choice==2)
+    {
+        decode(str);
+         printf("\ndecoded message %s\n", str);
+         reversal(str);
+    }
+    printf("\n3.exit enter 3\n");
+    scanf("%d", &choice);
+    if (choice==3)
+    {
+        printf("exiting program\n");
+    }
+return 0;
+}
+
+
+q3
+#include<stdio.h>
+void check(int n,int arr[n][n],int power,int load,int maintence){
+
+    for (int i = 0; i < n; i++)
+{
+    for (int j = 0; j < n; j++)
+    {
+       int d = arr[i][j];
+       if (d&1==1)
+       {
+        power =1;
+       }
+       else if (d&1==0)
+       {
+        power =0;
+       }
+         else if  ((d & (1 << 1)) == (1 << 1))
+       {
+        load =1;
+       }
+         else if  ((d & (1 << 1)) == (1 << 1))
+
+       {
+        load =0;
+       }
+           else if  ((d & (1 << 2)) == (1 << 2))
+       {
+        maintence =1;
+       }
+         else if  ((d & (1 << 2)) == (1 << 2))
+       {
+        maintence =0;
+       }
+      printf("\nreport of grid %dx%d\n",i,j);
+       if (power==1)
+       {
+        printf("power on\n");
+       }
+         if (power==0)
+       {
+        printf("power off\n");
+       }  if (load==1)
+       {
+        printf("over load\n");
+       }  if (load==0)
+       {
+        printf("normal\n");
+       }  if (maintence==1)
+       {
+        printf("need maintance\n");
+       }
+         }  if (maintence==0)
+       {
+        printf("no need of maintance\n");
+       }
+
+    }
+   
+}
+
+int main(){
+int n=0;
+int power=0;
+int load=0;
+int maintence=0;
+printf("input  how many rows and column");
+scanf("%d", &n);
+int arr[n][n];
+
+for (int i = 0; i < n; i++)
+{
+    for (int j = 0; j < n; j++)
+    {
+        printf("input rows and column");
+       scanf("%d", &arr[i][j]);
+    }
+    
+}
+check (n,arr,power,load,maintence);
+return 0;
+
+
+
+q2.
+#include <stdio.h>
+#include <string.h>
+
+int input(char name[], char cnic[]) {
+    printf("Enter your name: ");
+    scanf(" %[^\n]", name); 
+    printf("Enter CNIC number (without dashes): ");
+    scanf("%s", cnic);      
+    return 0;
+}
+
+int main() {
+    printf("Product code\n");
+
+    int code = 0;
+    int flag = 1;
+    int quantity = 0;
+    int bill = 0;
+    int total = 0;
+    int voucher = 0;
+
+    char name[50];
+    char cnic[20];
+
+    input(name, cnic);
+
+  int arr[4][3] = {
+    {1, 50, 100},
+    {2, 10, 200},
+    {3, 20, 300},
+    {4, 8, 150}
+};
+printf("\n-----------------------------------------------\n");
+printf("Product code\tQuantity in stock\tPrice per product\n");
+printf("-----------------------------------------------\n");
+
+for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 3; j++) {
+        if (j == 0)
+            printf("   %d\t\t\t", arr[i][j]);  
+        else
+            printf("%d\t\t\t", arr[i][j]);
+    }
+    printf("\n");  
+}
+
+printf("-----------------------------------------------\n");
+
+    while (1) {
+        printf("Input num of product you want (type 0 to end order): ");
+        scanf("%d", &code);
+
+        if (code == 0) {
+            flag = 0;
+            break;
+        }
+
+        printf("Input quantity: ");
+        scanf("%d", &quantity);
+
+        if (code == 1) {
+            arr[0][1] -= quantity;               
+            bill = quantity * arr[0][2];
+            total += bill;
+        } else if (code == 2) {
+            arr[1][1] -= quantity;
+            bill = quantity * arr[1][2];
+            total += bill;
+        } else if (code == 3) {
+            arr[2][1] -= quantity;
+            bill = quantity * arr[2][2];
+            total += bill;
+        } else if (code == 4) {
+            arr[3][1] -= quantity;
+            bill = quantity * arr[3][2];
+            total += bill;
+        } else {
+            printf("Invalid product code!\n");
+        }
+    }
+
+    if (flag == 0) {
+        printf("Have you got any vouchers?\n");
+        printf("We are offering EID discount!\n");
+        printf("Enter your voucher code: ");
+        scanf("%d", &voucher);
+
+        if (voucher == 2334) {
+            printf("\nYou have availed your discount of 25%%");
+            printf("\n----------------------------------------\n");
+            printf("\nTOTAL BILL\n");
+            printf("Original bill: %d\n", total);
+            printf("After discount: %.2f\n", total * 0.75);
+        } else {
+            printf("\n----------------------------------------\n");
+            printf("\nTOTAL BILL\n");
+            printf("Original bill: %d\n", total);
+        }
+
+        printf("\n----------------------------------------\n");
+        printf("Customer Name: %s\n", name);
+        printf("CNIC: %s\n", cnic);
+        printf("Final Payable Amount: %d\n", total);
+    }
+
+    return 0;
+}
+
+
+q1
+
+#include <stdio.h>
+#include <string.h>
+
+void addBook(int isbns[100], char titles[100][50], int prices[100], int quantities[100], int *n) {
+    int newIsbn;
+    printf("Enter ISBN: ");
+    scanf("%d", &newIsbn);
+
+    // Check duplicate ISBN
+    for (int i = 0; i < *n; i++) {
+        if (isbns[i] == newIsbn) {
+            printf("Error: ISBN already exists\n");
+            return;
+        }
+    }
+
+    isbns[*n] = newIsbn;
+
+    printf("Enter book title: ");
+    scanf(" %[^\n]", titles[*n]);  // read full line
+
+    printf("Enter price: ");
+    scanf("%d", &prices[*n]);
+
+    printf("Enter quantity: ");
+    scanf("%d", &quantities[*n]);
+
+    (*n)++;
+    printf("Book added successfully\n");
+}
+
+void processSale(int isbns[100], char titles[100][50], int prices[100], int quantities[100], int n) {
+    int searchIsbn, sold;
+    printf("Enter ISBN of book sold: ");
+    scanf("%d", &searchIsbn);
+
+    int found = -1;
+    for (int i = 0; i < n; i++) {
+        if (isbns[i] == searchIsbn) {
+            found = i;
+            break;
+        }
+    }
+
+    if (found == -1) {
+        printf("Error: Book not found.\n");
+        return;
+    }
+
+    printf("Enter number of copies sold ");
+    scanf("%d", &sold);
+
+    if (quantities[found] < sold) {
+        printf("Error Not enough stock for '%s'.\n", titles[found]);
+    } else {
+        quantities[found] -= sold;
+        printf("Sale done %d copies of '%s' sold.\n", sold, titles[found]);
+        printf("Remaining stock: %d\n", quantities[found]);
+    }
+}
+
+void lowStockReport(int isbns[100], char titles[100][50], int prices[100], int quantities[100], int n) {
+    printf("\nLow Stock Report\n");
+    for (int i = 0; i < n; i++) {
+        if (quantities[i] < 5) {
+            printf("%s ISBN: %d  Only %d left\n", titles[i], isbns[i], quantities[i]);
+        }
+    }
+}
+
+int main() {
+    int isbns[100];
+    char titles[100][50];
+    int prices[100];
+    int quantities[100];
+    int choice, n = 5;
+
+    
+    isbns[0] = 101; strcpy(titles[0], "C Programming");
+    isbns[1] = 102; strcpy(titles[1], "Learn C Fast");
+    isbns[2] = 103; strcpy(titles[2], "Head First C");
+    isbns[3] = 104; strcpy(titles[3], "Modern C");
+    isbns[4] = 105; strcpy(titles[4], "Clean Code in C");
+
+    prices[0] = 450; quantities[0] = 10;
+    prices[1] = 399; quantities[1] = 5;
+    prices[2] = 295; quantities[2] = 8;
+    prices[3] = 492; quantities[3] = 3;
+    prices[4] = 420; quantities[4] = 7;
+
+    while (1) {
+        printf("\nBOOK STORE MENU\n");
+        printf("1. Add New Book\n");
+        printf("2. Process Sale\n");
+        printf("3. Low Stock Report\n");
+        printf("4. Exit\n");
+        printf("Enter choice");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: addBook(isbns, titles, prices, quantities, &n); break;
+            case 2: processSale(isbns, titles, prices, quantities, n); break;
+            case 3: lowStockReport(isbns, titles, prices, quantities, n); break;
+            case 4: return 0;
+            default: printf("Invalid choice. Try again.\n");
+        }
+    }
+}
+q4
+#include <stdio.h>
+#define MAX 5 
+
+void display(int stack[], int top) {
+    if (top == -1) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Stack elements\n");
+        for (int i = top; i >= 0; i--) {
+            printf("%d\n", stack[i]);
+        }
+    }
+}
+
+void peek(int stack[], int top) {
+    if (top == -1) {
+        printf("Stack is empty.\n");
+    } else {
+        printf("The top element is%d\n", stack[top]);
+    }
+}
+
+void pop(int stack[], int *top) {
+    if (*top == -1) {
+        printf("Stack Underflow! No elements to pop.\n");
+    } else {
+        printf("%d popped from stack.\n", stack[*top]);
+        (*top)--; 
+    }
+}
+
+void push(int stack[], int *top) {
+    int val;
+    if (*top == MAX - 1) { 
+        printf("Stack Overflow \n");
+    } else {
+        printf("Enter value to push ");
+        scanf("%d", &val);
+        (*top)++;           
+        stack[*top] = val;   
+        printf("%d pushed into stack.\n", val);
+    }
+}
+
+int main() {
+    int stack[MAX];  
+    int top = -1;   
+    int choice;
+    int flag = 1;
+
+    while (flag) {
+        printf("\nChoose an operation:\n");
+        printf("1. PUSH\n");
+        printf("2. POP\n");
+        printf("3. PEEK\n");
+        printf("4. DISPLAY\n");
+        printf("5. EXIT\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                push(stack, &top);
+                break;
+            case 2:
+                pop(stack, &top);
+                break;
+            case 3:
+                peek(stack, top);
+                break;
+            case 4:
+                display(stack, top);
+                break;
+            case 5:
+                flag = 0;
+                printf("Exiting program.\n");
+                break;
+        }
+    }
+
+    return 0;
+}
+
+
+

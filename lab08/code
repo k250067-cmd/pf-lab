@@ -1,0 +1,212 @@
+#include<stdio.h> q3
+#include<string.h>
+int main(){
+    int counter =0;
+char arr[3][10]={
+        "Hello",
+        "World",
+        "C-Lang"
+    };
+for (int i = 0; i < 3; i++)
+{
+    for (int j = 0; j < 10;j++)
+    {
+        if (arr[i][j]=='a' || arr[i][j]=='e' || arr[i][j]=='i' || arr[i][j]=='o' || arr[i][j]=='u' || arr[i][j]=='n')
+        {
+            counter++;
+        }
+        
+    }
+    
+} printf("vowels are %d", counter);
+return 0;
+
+}
+
+
+
+
+#include<stdio.h>
+#include<stdlib.h> 
+#include<time.h>
+int main(){
+int n;
+srand(time(NULL));
+printf("input lenght and width of cinema", &n);
+int arr[n][n];
+for (int i = 0; i < n; i++)
+{
+    for (int j = 0; j < n; j++)
+    {
+    arr[i][j] = rand() % 2;
+    }
+    
+}
+  for (int i = 0; i < n; i++) {
+        int rowEmpty = 0;
+        for (int j = 0; j < n; j++) {
+            if (arr[i][j] == 0)
+                rowEmpty++;
+        }
+        totalEmpty += rowEmpty;
+
+        if (rowEmpty > maxEmptyInRow) {
+            maxEmptyInRow = rowEmpty;
+            rowWithMaxEmpty = i;
+        }
+    }
+   printf("\nTotal empty seats: %d\n", totalEmpty);
+    printf("Row with most empty seats: %d (has %d empty seats)\n", rowWithMaxEmpty, maxEmptyInRow);
+return 0;
+
+
+
+
+
+
+
+
+
+  #include <stdio.h>
+
+int main() {
+    char name[4][40] = {"Ayesha Nehal", "Mustafa", "Wajeeh", "D"};
+    char sub[4][30] = {"d", "t", "w", "r"};
+    int marks[4][4];
+    int total;
+    float avg;
+
+    // ===== INPUT =====
+    for (int i = 0; i < 4; i++) {
+        printf("\nEnter marks for %s:\n", name[i]);
+        for (int j = 0; j < 4; j++) {
+            printf("   Input grade for sub %s: ", sub[j]);
+            scanf("%d", &marks[i][j]);
+        }
+    }
+
+    printf("\n---------------------------------------------------------\n");
+    printf("\n%-15s", "");
+    for (int j = 0; j < 4; j++) {
+        printf("%10s", sub[j]);
+    }
+    printf("%12s", "Average");
+    printf("\n---------------------------------------------------------\n");
+
+    // ===== DISPLAY MARKS + STUDENT AVERAGE =====
+    for (int i = 0; i < 4; i++) {
+        printf("%-15s", name[i]);
+        total = 0;
+
+        for (int j = 0; j < 4; j++) {
+            printf("%10d", marks[i][j]);
+            total += marks[i][j];
+        }
+
+        avg = total / 4.0;
+        printf("%12.2f\n", avg);
+    }
+
+    printf("\n---------------------------------------------------------\n");
+
+    
+    printf("%-15s", "Subject Avg");
+
+    for (int j = 0; j < 4; j++) {
+        total = 0;
+        for (int i = 0; i < 4; i++)
+            total += marks[i][j];
+
+        avg = total / 4.0;
+        printf("%10.2f", avg);
+    }
+
+    printf("\n---------------------------------------------------------\n");
+
+    return 0;
+}
+
+
+  #include <stdio.h>
+void tranpose(int n, int arr[n][n], int att[n][n]){
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("input num for [%d][%d]", i,j);
+            scanf("%d", &arr[i][j]);
+        }
+        
+    }
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            att[i][j] = arr[j][i];
+        }
+        
+    }
+   
+}
+void reverseRows(int n, int att[n][n]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n / 2; j++) {
+            int temp = att[i][j];
+            att[i][j] = att[i][n - 1 - j];
+            att[i][n - 1 - j] = temp;
+        }
+    }
+}
+int main(){
+int  n=2;
+int arr[n][n];
+int att[n][n];
+tranpose(n,arr,att);
+ reverseRows(n, att);
+  for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("[%d]", att[i][j]);
+        }
+        printf("\n");
+    }
+
+return 0;
+}
+
+
+  #include <stdio.h>
+
+int main() {
+    int inventory[2][3][4];  // 2 sections, 3 shelves, 4 items each
+
+    printf("Enter quantities for each item");
+
+    // Input quantities
+    for (int section = 0; section < 2; section++) {
+        for (int shelf = 0; shelf < 3; shelf++) {
+            for (int item = 0; item < 4; item++) {
+                printf("Section %d, Shelf %d, item %d ", section + 1, shelf + 1, item + 1);
+                scanf("%d", &inventory[section][shelf][item]);
+            }
+        }
+    }
+
+    // Display the inventory data
+    printf("\nWarehouse Inventory:\n");
+    for (int section = 0; section < 2; section++) {
+        printf("\n- Section %d -\n", section + 1);
+        for (int shelf = 0; shelf < 3; shelf++) {
+            printf("Shelf %d: ", shelf + 1);
+            for (int item = 0; item < 4; item++) {
+                printf("%d ", inventory[section][shelf][item]);
+            }
+            printf("\n");
+        }
+    }
+
+    return 0;
+}
+
+}

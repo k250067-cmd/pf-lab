@@ -1,0 +1,122 @@
+#include <stdio.h>
+
+
+void findTwoRoads(int arr[], int n, int target, int *index1, int *index2) {
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] + arr[j] == target) {
+                *index1 = i;
+                *index2 = j;
+                return;
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter number of roads: ");
+    scanf("%d", &n);
+
+    int vehicles[n];
+    printf("Enter vehicle counts for %d roads:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &vehicles[i]);
+    }
+
+    int target;
+    printf("Enter target vehicle count: ");
+    scanf("%d", &target);
+
+    int i1, i2;
+    findTwoRoads(vehicles, n, target, &i1, &i2);
+
+    printf("Two roads found at indices %d and %d (values %d + %d = %d)\n",
+           i1, i2, vehicles[i1], vehicles[i2], target);
+
+    return 0;
+}
+
+
+q4
+#include <stdio.h>
+
+
+void updateValue(int num) {
+    num = 85;
+}
+
+
+void updateReference(int *num) {
+    *num = 85; 
+
+int main() {
+    int value = 80;
+
+    printf("Before updateValue: %d\n", value);
+    updateValue(value);
+    printf("After updateValue: %d no change\n", value);
+
+    printf("Before updateReference: %d\n", value);
+    updateReference(&value);
+    printf("After updateReference: %d updated successfully\n", value);
+
+    return 0;
+}
+
+q5
+#include <stdio.h>
+
+void analyzeData(int *arr, int n, int *max, int *min, float *avg) {
+    *max = *min = arr[0];
+    int sum = arr[0];
+
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > *max)
+            *max = arr[i];
+        if (arr[i] < *min)
+            *min = arr[i];
+        sum += arr[i];
+    }
+    *avg = (float)sum / n;
+}
+
+int main() {
+    int data[] = {40, 50, 60, 70, 80};
+    int max, min;
+    float avg;
+
+    analyzeData(data, 5, &max, &min, &avg);
+
+    printf("Maximum = %d\n", max);
+    printf("Minimum = %d\n", min);
+    printf("Average = %.2f\n", avg);
+
+    return 0;
+}
+
+
+q6
+#include <stdio.h>
+#include <string.h>
+
+char* formatName(char *first, char *last) {
+    static char fullName[100]; 
+    snprintf(fullName, sizeof(fullName), "%s %s", first, last);
+    return fullName;
+}
+
+int main() {
+    char first[50], last[50];
+    printf("Enter first name: ");
+    scanf("%s", first);
+    printf("Enter last name: ");
+    scanf("%s", last);
+
+    char *full = formatName(first, last);
+    printf("Formatted full name: %s\n", full);
+
+    return 0;
+}
+
+

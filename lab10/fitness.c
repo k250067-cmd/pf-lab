@@ -146,6 +146,16 @@
 //     }
 // }
 
+
+
+
+
+
+
+
+
+
+q5
 #include <stdio.h>
 #include <string.h>
 
@@ -249,6 +259,11 @@ int main() {
 }
 
 
+
+
+
+
+q6
 #include <stdio.h>
 #include <string.h>
 
@@ -370,3 +385,4 @@ int main() {
         }
     }
 }
+

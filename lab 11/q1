@@ -1,1 +1,60 @@
+#include <stdio.h>
+
+struct Gift {
+    char name[20];
+    char type[20];
+    int price;
+    int quantity;
+};
+
+int main() {
+    struct Gift g[50];
+    int n, priceRange, quantityRange;
+
+    printf("Enter number of gifts: ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        printf("\nGift %d\n", i+1);
+
+        printf("Enter name: ");
+        scanf("%s", g[i].name);
+
+        printf("Enter type: ");
+        scanf("%s", g[i].type);
+
+        printf("Enter price: ");
+        scanf("%d", &g[i].price);
+
+        printf("Enter quantity: ");
+        scanf("%d", &g[i].quantity);
+    }
+
+    printf("\nEnter price range to filter: ");
+    scanf("%d", &priceRange);
+
+    printf("Enter quantity range to filter: ");
+    scanf("%d", &quantityRange);
+
+    printf("\n--- Gifts Above Price Range ---\n");
+    for (int i = 0; i < n; i++) {
+        if (g[i].price > priceRange)
+            printf("%s (%s) Price: %d\n", g[i].name, g[i].type, g[i].price);
+    }
+
+    printf("\n--- Gifts Above Quantity Range ---\n");
+    for (int i = 0; i < n; i++) {
+        if (g[i].quantity > quantityRange)
+            printf("%s Quantity: %d\n", g[i].name, g[i].quantity);
+    }
+
+    return 0;
+}
+
+
+
+
+
+q2
+
 

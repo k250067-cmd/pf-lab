@@ -1,1 +1,294 @@
+#include <stdio.h>
+
+void countdown(int days, int total) {
+    if (days == 0)
+        return;
+
+    printf("Event starts in %d out of %d days.\n", days, total);
+    countdown(days - 1, total);
+}
+
+int main() {
+    int events, d;
+
+    printf("Enter number of events: ");
+    scanf("%d", &events);
+
+    for (int i = 0; i < events; i++) {
+        printf("\nEnter days left for event %d: ", i+1);
+        scanf("%d", &d);
+
+        printf("Countdown for Event %d:\n", i+1);
+        countdown(d, d);
+    }
+
+    return 0;
+}
+
+
+
+
+q3
+#include <stdio.h>
+
+struct Employee {
+    char name[20];
+    int id;
+    int days;
+};
+
+int totalAttendance(struct Employee e[], int index, int n) {
+    if (index == n)
+        return 0;
+    return e[index].days + totalAttendance(e, index+1, n);
+}
+
+int main() {
+    struct Employee emp[50];
+    int n, minDays;
+
+    printf("Enter number of employees: ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        printf("\nEmployee %d\n", i+1);
+        printf("Enter name: ");
+        scanf("%s", emp[i].name);
+
+        printf("Enter ID: ");
+        scanf("%d", &emp[i].id);
+
+        printf("Enter days present: ");
+        scanf("%d", &emp[i].days);
+    }
+
+    printf("\nEnter minimum required days: ");
+    scanf("%d", &minDays);
+
+    printf("\nEmployees with low attendance:\n");
+    for (int i = 0; i < n; i++) {
+        if (emp[i].days < minDays)
+            printf("%s (ID %d) Days: %d\n", emp[i].name, emp[i].id, emp[i].days);
+    }
+
+    int total = totalAttendance(emp, 0, n);
+    printf("\nTotal attendance of all employees: %d\n", total);
+
+    return 0;
+}
+
+
+
+q4
+#include <stdio.h>
+#include <string.h>
+
+int isPalindrome(char arr[], int start, int end) {
+    if (start >= end)
+        return 1;
+    if (arr[start] != arr[end])
+        return 0;
+    return isPalindrome(arr, start+1, end-1);
+}
+
+void reverseWord(char arr[], int index, int len) {
+    if (index < 0)
+        return;
+    printf("%c", arr[index]);
+    reverseWord(arr, index-1, len);
+}
+
+int main() {
+    char word[100];
+    int t;
+
+    printf("Enter number of words: ");
+    scanf("%d", &t);
+
+    while (t--) {
+        printf("\nEnter a word: ");
+        scanf("%s", word);
+
+        int len = strlen(word)-1;
+
+        printf("Reversed: ");
+        reverseWord(word, len, len);
+        printf("\n");
+
+        if (isPalindrome(word, 0, len))
+            printf("It is a palindrome.\n");
+        else
+            printf("Not a palindrome.\n");
+    }
+
+    return 0;
+}
+
+
+
+
+
+q5
+#include <stdio.h>
+
+int sumScores(int arr[], int i, int n) {
+    if (i == n)
+        return 0;
+    return arr[i] + sumScores(arr, i+1, n);
+}
+
+int main() {
+    int teams, rounds;
+
+    printf("Enter number of teams: ");
+    scanf("%d", &teams);
+
+    printf("Enter number of rounds: ");
+    scanf("%d", &rounds);
+
+    int scores[50][50];
+    int threshold;
+
+    for (int i = 0; i < teams; i++) {
+        printf("\nTeam %d scores:\n", i+1);
+        for (int j = 0; j < rounds; j++) {
+            scanf("%d", &scores[i][j]);
+        }
+    }
+
+    printf("\nEnter threshold score: ");
+    scanf("%d", &threshold);
+
+    for (int i = 0; i < teams; i++) {
+        int total = sumScores(scores[i], 0, rounds);
+        printf("\nTeam %d Total Score = %d", i+1, total);
+
+        if (total > threshold)
+            printf(" (Above Threshold)");
+    }
+
+    return 0;
+}
+
+
+q6
+#include <stdio.h>
+
+struct Item {
+    char name[20];
+    char category[20];
+    int quantity;
+};
+
+int main() {
+    struct Item items[50];
+    struct Item *ptr = items;
+
+    int n, minQ;
+    char cat[20];
+
+    printf("Enter number of items: ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        printf("\nItem %d\n", i+1);
+
+        printf("Enter name: ");
+        scanf("%s", (ptr+i)->name);
+
+        printf("Enter category: ");
+        scanf("%s", (ptr+i)->category);
+
+        printf("Enter quantity: ");
+        scanf("%d", &(ptr+i)->quantity);
+    }
+
+    printf("\nEnter category to search: ");
+    scanf("%s", cat);
+
+    printf("Enter minimum quantity: ");
+    scanf("%d", &minQ);
+
+    printf("\nFiltered Items:\n");
+    for (int i = 0; i < n; i++) {
+        if ((ptr+i)->quantity >= minQ && strcmp((ptr+i)->category, cat) == 0)
+            printf("%s (%d)\n", (ptr+i)->name, (ptr+i)->quantity);
+    }
+
+    return 0;
+}
+
+
+
+
+q7
+#include <stdio.h>
+#include <string.h>
+
+struct Forecast {
+    char color[20];
+    int luckyNum;
+    char advice[50];
+};
+
+struct User {
+    char name[20];
+    char zodiac[20];
+    int day, month;
+};
+
+void assignZodiac(struct User *u) {
+    if ((u->month == 3 && u->day >= 21) || (u->month == 4 && u->day <= 19))
+        strcpy(u->zodiac, "Aries");
+    else if ((u->month == 4 && u->day >= 20) || (u->month == 5 && u->day <= 20))
+        strcpy(u->zodiac, "Taurus");
+    else
+        strcpy(u->zodiac, "Other");
+}
+
+void displayUser(struct User u, struct Forecast f[]) {
+    printf("\nName: %s", u.name);
+    printf("\nZodiac: %s", u.zodiac);
+
+    int idx = 0;  
+    if (strcmp(u.zodiac, "Taurus") == 0) idx = 1;
+
+    printf("\nLucky Color: %s", f[idx].color);
+    printf("\nLucky Number: %d", f[idx].luckyNum);
+    printf("\nAdvice: %s\n", f[idx].advice);
+}
+
+int main() {
+    struct User users[20];
+    struct Forecast f[12];
+
+    strcpy(f[0].color, "Red");
+    f[0].luckyNum = 5;
+    strcpy(f[0].advice, "Stay confident.");
+
+    strcpy(f[1].color, "Blue");
+    f[1].luckyNum = 9;
+    strcpy(f[1].advice, "Be patient.");
+
+    int n;
+    printf("Enter number of users: ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter name: ");
+        scanf("%s", users[i].name);
+
+        printf("Enter birth day and month: ");
+        scanf("%d %d", &users[i].day, &users[i].month);
+
+        assignZodiac(&users[i]);
+    }
+
+    printf("\n--- User Horoscope ---\n");
+    for (int i = 0; i < n; i++) {
+        displayUser(users[i], f);
+    }
+
+    return 0;
+}
 

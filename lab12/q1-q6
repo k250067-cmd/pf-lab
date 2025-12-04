@@ -1,0 +1,148 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int containsDigit(char *str) {
+    for(int i=0; str[i]!='\0'; i++)
+        if(str[i]>='0' && str[i]<='9') return 1;
+    return 0;
+}
+
+int getCategory(char c) {
+    if(c>='A' && c<='Z') return 1;
+    if(c>='a' && c<='z') return 2;
+    if(c>='0' && c<='9') return 3;
+    return 4;
+}
+
+float calculateSimilarity(char *pattern, char *password) {
+    int len=strlen(pattern);
+    int matched=0;
+    for(int i=0;i<len;i++)
+        if(getCategory(pattern[i])==getCategory(password[i]))
+            matched++;
+    return (matched*100.0)/len;
+}
+
+int main() {
+    int n,i,j;
+
+    // Task 1
+    printf("Task 1\nNumber of book categories: ");
+    scanf("%d",&n);
+    int *stock=(int*)malloc(n*sizeof(int));
+    for(i=0;i<n;i++){
+        printf("Stock for category %d: ",i);
+        scanf("%d",&stock[i]);
+    }
+    int total=0,minIndex=0;
+    for(i=0;i<n;i++){
+        total+=stock[i];
+        if(stock[i]<stock[minIndex]) minIndex=i;
+    }
+    printf("Total stock: %d\nAverage stock: %.2f\nLowest stock category index: %d\n",total,(float)total/n,minIndex);
+    printf("Update category index: "); scanf("%d",&i);
+    printf("Enter new stock: "); scanf("%d",&stock[i]);
+    total=0; minIndex=0;
+    for(i=0;i<n;i++){
+        total+=stock[i];
+        if(stock[i]<stock[minIndex]) minIndex=i;
+    }
+    printf("Updated total: %d\nAverage: %.2f\nLowest stock index: %d\n",total,(float)total/n,minIndex);
+    free(stock);
+
+    // Task 2
+    printf("\nTask 2\nNumber of feedback entries: ");
+    scanf("%d",&n);
+    getchar();
+    char **feedback=(char**)malloc(n*sizeof(char*));
+    for(i=0;i<n;i++){
+        feedback[i]=(char*)malloc(200*sizeof(char));
+        printf("Feedback %d: ",i+1);
+        fgets(feedback[i],200,stdin);
+        feedback[i][strcspn(feedback[i],"\n")]=0;
+    }
+    int totalChars=0,longestIndex=0;
+    for(i=0;i<n;i++){
+        totalChars+=strlen(feedback[i]);
+        if(strlen(feedback[i])>strlen(feedback[longestIndex])) longestIndex=i;
+    }
+    printf("Total characters: %d\n",totalChars);
+    printf("Feedbacks:\n");
+    for(i=0;i<n;i++) printf("%s\n",feedback[i]);
+    printf("Longest feedback: %s\n",feedback[longestIndex]);
+    for(i=0;i<n;i++) free(feedback[i]);
+    free(feedback);
+
+    // Task 3
+    printf("\nTask 3\nNumber of usernames: ");
+    scanf("%d",&n);
+    getchar();
+    char **usernames=(char**)malloc(n*sizeof(char*));
+    for(i=0;i<n;i++){
+        usernames[i]=(char*)malloc(100*sizeof(char));
+        printf("Username %d: ",i+1);
+        fgets(usernames[i],100,stdin);
+        usernames[i][strcspn(usernames[i],"\n")]=0;
+    }
+    printf("Usernames without digits:\n");
+    for(i=0;i<n;i++){
+        if(!containsDigit(usernames[i])) printf("%s\n",usernames[i]);
+    }
+    for(i=0;i<n;i++) free(usernames[i]);
+    free(usernames);
+
+    // Task 4
+    printf("\nTask 4\nNumber of movie categories: ");
+    scanf("%d",&n);
+    int *ratings=(int*)malloc(n*sizeof(int));
+    for(i=0;i<n;i++){
+        printf("Rating for category %d: ",i);
+        scanf("%d",&ratings[i]);
+    }
+    int totalRating=0,maxIndex=0;
+    for(i=0;i<n;i++){
+        totalRating+=ratings[i];
+        if(ratings[i]>ratings[maxIndex]) maxIndex=i;
+    }
+    printf("Total ratings: %d\nAverage ratings: %.2f\nHighest rating category index: %d\n",totalRating,(float)totalRating/n,maxIndex);
+    printf("Update category index: "); scanf("%d",&i);
+    printf("Enter new rating: "); scanf("%d",&ratings[i]);
+    totalRating=0; maxIndex=0;
+    for(i=0;i<n;i++){
+        totalRating+=ratings[i];
+        if(ratings[i]>ratings[maxIndex]) maxIndex=i;
+    }
+    printf("Updated total: %d\nAverage: %.2f\nHighest rating index: %d\n",totalRating,(float)totalRating/n,maxIndex);
+    free(ratings);
+
+    // Task 5
+    printf("\nTask 5\nNumber of participants: ");
+    scanf("%d",&n);
+    getchar();
+    char *pattern=(char*)malloc(100*sizeof(char));
+    printf("Enter password pattern: ");
+    fgets(pattern,100,stdin);
+    pattern[strcspn(pattern,"\n")]=0;
+    char **pass=(char**)malloc(n*sizeof(char*));
+    float *scores=(float*)malloc(n*sizeof(float));
+    for(i=0;i<n;i++){
+        pass[i]=(char*)malloc(100*sizeof(char));
+        printf("Password %d: ",i+1);
+        fgets(pass[i],100,stdin);
+        pass[i][strcspn(pass[i],"\n")]=0;
+        scores[i]=calculateSimilarity(pattern,pass[i]);
+    }
+    int maxIndex=0;
+    for(i=1;i<n;i++)
+        if(scores[i]>scores[maxIndex]) maxIndex=i;
+    for(i=0;i<n;i++)
+        printf("Password: %s -> %.2f%% similarity\n",pass[i],scores[i]);
+    printf("Highest similarity password: %s -> %.2f%%\n",pass[maxIndex],scores[maxIndex]);
+    free(pattern);
+    for(i=0;i<n;i++) free(pass[i]);
+    free(pass);
+    free(scores);
+
+    return 0;
+}
